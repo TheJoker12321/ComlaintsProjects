@@ -1,0 +1,125 @@
+#home-title {
+
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+}
+
+.home-page {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.send-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 2.5rem;
+    background-color: #f7f6f8;
+    width: 50%;
+    border-radius: 8px;
+    height: 23rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    
+}
+
+.send-message h1 {
+
+    font-size: 2.5rem;
+    text-align: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.send-message p {
+
+    font-size: 1.5rem;
+}
+
+#send-button {
+
+    height: 2.5rem;
+    width: 13rem;
+    background-color: #419955;
+    color: white;
+    font-size: 1.3rem;
+    border-radius: 4px;
+    border: none;
+}
+
+.commander {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    justify-content: space-evenly;
+    background-color: #f7f6f8;
+    width: 50%;
+    border-radius: 8px;
+    height: 23rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+}
+
+.commander h1 {
+
+    font-size: 3rem;
+    margin-top: 15px;
+}
+
+.commander-input {
+
+    padding-bottom: 2rem;
+}
+
+#password {
+
+    height: 2.5rem;
+    border-radius: 5px;
+    border: 1px solid rgba(128, 128, 128, 0.411);
+    width: 15rem;
+    font-size: 1.5rem;
+    padding-left: 0.5rem;
+}
+
+#log-admin {
+
+    height: 2.5rem;
+    width: 13rem;
+    background-color: #419955;
+    color: white;
+    font-size: 1.3rem;
+    border-radius: 4px;
+    border: none;
+    background-color: #2867bd;
+}
+
+@media only screen and (max-width: 800px) {
+  body {
+    
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .commander {
+
+    width: 80%;
+  }
+
+  .send-message {
+
+    width: 80%;
+  }
+
+  .send-message h1 {
+
+    text-align: center;
+  }
+}
