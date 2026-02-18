@@ -4,11 +4,7 @@ import 'dotenv/config'
 
 export function checkAdmin(req, res, next) {
 
-    const { authorization } = req.headers
-    console.log(req.headers);
-    
-    console.log(authorization);
-    
+    const { authorization } = req.headers   
 
     if (!authorization) {
 
@@ -20,7 +16,6 @@ export function checkAdmin(req, res, next) {
     }
 
     const partsAuth = authorization.split(' ')
-    console.log(partsAuth);
     
 
     if (partsAuth[0] !== 'Bearer' || partsAuth.length > 2) {
@@ -32,17 +27,20 @@ export function checkAdmin(req, res, next) {
         })
 
     }
+    
+    try {
 
-    const verifyToken = jwt.verify(partsAuth[1], process.env.PRIVATE_KEY)
+        const verifyToken = jwt.verify(partsAuth[1], process.env.PRIVATE_KEY)
+        next()
 
-    if (!verifyToken) {
+    } catch {
 
         return res.status(401).json({
 
             error: 'Unauthorized'
-        })
-    }
 
-    next()
+        })
+
+    }
 
 }

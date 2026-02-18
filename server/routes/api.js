@@ -39,13 +39,22 @@ api.post('/admin/login', (req, res) => {
         })
     }
 
-    const token = jwt.sign({username: 'admin'}, process.env.PRIVATE_KEY, {expiresIn: '1h'})
+    const token = jwt.sign({username: 'admin'}, process.env.PRIVATE_KEY, {expiresIn: '1min'})
 
     res.status(201).json({
         message: "success",
         token,
     })
 
+})
+
+api.get('/checkToken', checkAdmin, (req, res) => {
+
+    res.status(200).json({
+
+        isOpen: true
+        
+    })
 })
 
 api.get('/complaints/:type', checkAdmin, async (req, res) => {
