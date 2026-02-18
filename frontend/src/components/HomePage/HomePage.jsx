@@ -34,6 +34,7 @@ export default function HomePage() {
         token.current = data["token"]
         if (token.current) {
 
+            localStorage.setItem('token', token.current)
             navigate("/admin/getMessages")
         }
     }

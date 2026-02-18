@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { response } from 'express'
 import Message from '../DB/createTables.js'
 import jwt from 'jsonwebtoken'
 import { checkAdmin } from '../middlewere/checkAdmin.js'
@@ -48,16 +48,36 @@ api.post('/admin/login', (req, res) => {
 
 })
 
-api.get('/complaints', checkAdmin, async (req, res) => {
-
-    const result = await Message.findAll({order:[ ['createdAt', 'DESC']]})
-    const data = result.map(message => message.dataValues)
+api.get('/complaints/:type', checkAdmin, async (req, res) => {
     
-    res.status(200).json({
+    const { type } = req.params
 
-        result: data
+    let result;
+    let data;
 
-    })
+    if (type === 'all') {
+        result = await Message.findAll({order: [['createdAt', 'DESC']]})
+        data = result.map(message => message.dataValues)
+
+        res.status(200).json({
+
+            response: data
+
+        })
+
+    } else {
+        
+        result = await Message.findAll({where: {category: `${type}`}}, {order: [['createdAt', 'DESC']]})
+        data = result.map(message => message.dataValues)
+        
+
+        res.status(200).json({
+
+            response: data 
+
+        })
+
+    }
         
 })
 

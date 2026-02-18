@@ -9,6 +9,9 @@ export default function SubmitPage() {
 
   async function sendComlaint() {
 
+    if (!category) return
+
+    
     const res = await fetch('http://localhost:3002/api/complaints', {
 
       method: 'post',
